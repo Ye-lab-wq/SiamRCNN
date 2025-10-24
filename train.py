@@ -52,7 +52,7 @@ class DetectionModel(ModelDesc):
         return get_current_tower_context().is_training
 
     def optimizer(self):
-        lr = tf.get_variable('learning_rate', initializer=0.003, trainable=False)
+        lr = tf.compat.v1.get_variable('learning_rate', initializer=0.003, trainable=False)
         tf.summary.scalar('learning_rate-summary', lr)
 
         # The learning rate in the config is set for 8 GPUs, and we use trainers with average=False.
@@ -398,7 +398,7 @@ class ResNetFPNTrackModel(ResNetFPNModel):
             roi_aligned_ref_features = precomputed_ref_features[tf.newaxis]
 
         if cfg.MODE_SHARED_CONV_REDUCE:
-            scope = tf.get_variable_scope()
+            scope = tf.compat.v1.get_variable_scope()
         else:
             scope = ""
 
@@ -508,7 +508,7 @@ class ResNetFPNTrackModel(ResNetFPNModel):
         else:
             ref_image = self.preprocess(inputs['ref_image'])  # 1CHW
             ref_box = inputs['ref_box']
-            with tf.variable_scope(tf.get_variable_scope(), reuse=True):
+            with tf.variable_scope(tf.compat.v1.get_variable_scope(), reuse=True):
                 ref_features, _ = self.backbone(ref_image)
 
         anchor_inputs = {k: v for k, v in inputs.items() if k.startswith('anchor_')}
@@ -619,7 +619,7 @@ class ResNetFPNTrackModel(ResNetFPNModel):
 
         fastrcnn_head_func = getattr(model_frcnn, cfg.FPN.FRCNN_HEAD_FUNC)
         if cfg.MODE_SHARED_CONV_REDUCE:
-            scope = tf.get_variable_scope()
+            scope = tf.compat.v1.get_variable_scope()
         else:
             scope = ""
         all_posteriors = []

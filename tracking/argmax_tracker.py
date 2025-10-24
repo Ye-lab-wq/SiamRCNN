@@ -1,3 +1,5 @@
+import os.path
+
 import cv2
 import random
 import numpy as np
@@ -22,7 +24,8 @@ class PrecomputingReferenceTracker(Tracker):
         if need_network:
             logger.set_logger_dir("/tmp/test_log_/" + str(random.randint(0, 10000)), 'd')
             if model == "best":
-                load = "train_log/hard_mining3/model-1360500"
+                # load = "train_log/hard_mining3/model-1360500"
+                load = os.path.join("..", "train_log", "hard_mining3", "model-1360500")
             elif model == "nohardexamples":
                 load = "train_log/condrcnn_all_2gpu_lrreduce2/model-1200500"
             elif model == "newrpn":

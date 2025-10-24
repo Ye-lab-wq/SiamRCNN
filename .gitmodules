@@ -1,0 +1,6 @@
+[submodule "got10k-toolkit"]
+	path = got10k-toolkit
+	url = https://github.com/pvoigtlaender/got10k-toolkit.git
+[submodule "tensorpack"]
+	path = tensorpack
+	url = https://github.com/tensorpack/tensorpack.git

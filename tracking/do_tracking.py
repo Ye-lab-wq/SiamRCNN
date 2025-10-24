@@ -9,13 +9,14 @@ from tracking.argmax_tracker import ArgmaxTracker
 from tracking.three_stage_tracker import ThreeStageTracker
 
 # change these data paths to where you have the datasets!
-DATASET_PREFIX = "/globalwork/data/"
+DATASET_PREFIX = r"F:\data"  # "/globalwork/data/"
 VOT18_ROOT_DIR = os.path.join(DATASET_PREFIX, 'vot18')
 VOT17_ROOT_DIR = os.path.join(DATASET_PREFIX, 'vot17')
 VOT16_ROOT_DIR = os.path.join(DATASET_PREFIX, 'vot16')
 VOT15_ROOT_DIR = os.path.join(DATASET_PREFIX, 'vot15')
 VOT18_LT_ROOT_DIR = os.path.join(DATASET_PREFIX, 'vot18-lt')
-OTB_2015_ROOT_DIR = os.path.join(DATASET_PREFIX, 'OTB_new')
+# OTB_2015_ROOT_DIR = os.path.join(DATASET_PREFIX, 'OTB_new')
+OTB_2015_ROOT_DIR = os.path.join(DATASET_PREFIX, 'OTB2015/OTB100')
 OTB_2013_ROOT_DIR = os.path.join(DATASET_PREFIX, 'OTB2013')
 DAVIS_2017_ROOT_DIR = os.path.join(DATASET_PREFIX, 'DAVIS2017')
 YOUTUBE_VOS_2019_ROOT_DIR = os.path.join(DATASET_PREFIX, "youtube-vos-2019")

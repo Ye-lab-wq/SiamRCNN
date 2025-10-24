@@ -31,10 +31,10 @@ def GroupNorm(x, group=32, gamma_initializer=tf.constant_initializer(1.)):
 
     new_shape = [1, group, group_size, 1, 1]
 
-    beta = tf.get_variable('beta', [chan], initializer=tf.constant_initializer())
+    beta = tf.compat.v1.get_variable('beta', [chan], initializer=tf.constant_initializer())
     beta = tf.reshape(beta, new_shape)
 
-    gamma = tf.get_variable('gamma', [chan], initializer=gamma_initializer)
+    gamma = tf.compat.v1.get_variable('gamma', [chan], initializer=gamma_initializer)
     gamma = tf.reshape(gamma, new_shape)
 
     out = tf.nn.batch_normalization(x, mean, var, beta, gamma, 1e-5, name='output')

@@ -165,9 +165,13 @@ def roi_align(featuremap, boxes, resolution):
         NxCx res x res
     """
     # sample 4 locations per roi bin
+
+    tfshape = tf.shape(boxes)[0]
+
     ret = crop_and_resize(
         featuremap, boxes,
-        tf.zeros([tf.shape(boxes)[0]], dtype=tf.int32),
+        # tf.zeros([tf.shape(boxes)[0]], dtype=tf.int32),
+        tf.zeros(shape=tfshape, dtype=tf.int32),
         resolution * 2)
     ret = tf.nn.avg_pool(ret, [1, 1, 2, 2], [1, 1, 2, 2], padding='SAME', data_format='NCHW')
     return ret
